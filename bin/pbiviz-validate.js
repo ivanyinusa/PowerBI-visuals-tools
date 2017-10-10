@@ -32,17 +32,8 @@ let program = require('commander');
 let validator = require('powerbi-visuals-package-validator');
 let VisualPackage = require('../lib/VisualPackage');
 let ConsoleWriter = require('../lib/ConsoleWriter');
-let CommandHelpManager = require('../lib/CommandHelpManager');
-let options = process.argv;
 
-for (let i = 0; i < options.length; i++) {
-    if (options[i] == '--help' || options[i] == '-h') {
-        program.help(CommandHelpManager.createSubCommandHelpCallback(options));
-        process.exit(0);
-    }
-}
-
-program.parse(options);
+program.parse(process.argv);
 
 let cwd = process.cwd();
 let args = program.args;
